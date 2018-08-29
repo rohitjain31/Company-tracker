@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  overflow-y: hidden;
+}
+
+.keepSmallMarginTop {
+    margin-top: 10px;
+}
+
+.keepMarginBottom {
+    margin-bottom: 10px;
+}
+
+.keepMarginTop {
+  margin-top: 30px;
+}

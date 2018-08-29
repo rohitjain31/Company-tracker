@@ -1,0 +1,70 @@
+<clr-modal [(clrModalOpen)]="targetModal" [clrModalClosable]="false">
+    <h3 class="modal-title">{{ targetModalHeader }}</h3>
+    <div class="modal-body">
+        <div class="keepMarginTop">
+            <label for="companyName"><b>Company Name: </b></label>&nbsp;&nbsp;
+            <input type="text" value="" placeholder="Target Company Name" name="companyName" />
+        </div>
+
+        <div class="keepMarginTop">
+            <label for="companyStatus"><b>Status: </b></label>&nbsp;&nbsp;
+            <select name="" id="">
+                <option value="researching">Researching</option>
+                <option value="pending approval">Pending Approval</option>
+                <option value="approved">Approved</option>
+                <option value="declined">Declined</option>
+            </select>
+        </div>
+
+        <div class="keepMarginTop">
+            <label for="companyInfo"><b>Description: </b></label>&nbsp;&nbsp;
+            <textarea id="" name="companyInfo" rows="5"></textarea>
+        </div>
+
+        <div class="keepMarginTop">
+            <label for="keyContacts"><b>Key Contact: </b></label>
+            <div class="keepSmallMarginTop">
+                <input type="text" placeholder="Contact name" />&nbsp;&nbsp;
+                <input type="text" placeholder="Contact email id">
+            </div>
+        </div>
+
+        <div class="keepMarginTop">
+            <label for="financialPerformance"><b>Financial Performance: </b></label>
+            <div class="keepSmallMarginTop keepMarginBottom"
+                *ngFor="let item of perfCountArray; let i = index"
+            >
+                <select name="" id="">
+                    <option value="researching">Revenue</option>
+                    <option value="pending approval">Profit</option>
+                </select>&nbsp;&nbsp;
+
+                <select name="" id="">
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                </select>&nbsp;&nbsp;
+
+                <input type="number" [(ngModel)]="financialData[i]" placeholder="Value in cr" />&nbsp;&nbsp;
+
+                <ng-container *ngIf="i == perfCountArray.length - 1">
+                    <button
+                        class="btn btn-outline"
+                        (click)="onAddfinancialReport()"
+                    >Add</button>
+                </ng-container>
+
+                <ng-container *ngIf="i !== perfCountArray.length - 1">
+                    <button
+                        class="btn btn-danger-outline"
+                        (click)="onRemovefinancialReport(i)"
+                    >clear</button>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="onCloseTargetModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="targetModal = false">Ok</button>
+    </div>
+</clr-modal>

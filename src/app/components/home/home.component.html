@@ -1,0 +1,19 @@
+<app-navbar
+    (createNewTarget)="onCreateNewTarget($event)"
+></app-navbar>
+
+<br>
+<br>
+
+<div *ngFor="let target of targetList">
+    <app-target-list [target]="target"></app-target-list>
+    <app-target-list [target]="target"></app-target-list>
+</div>
+
+<div>
+    <app-modal
+        [targetModal]="targetModal"
+        (closeTargetModal)="onCloseTargetModal()"
+        [targetModalHeader]="targetModalHeader"
+    ></app-modal>
+</div>

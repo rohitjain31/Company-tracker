@@ -1,0 +1,76 @@
+<clr-stack-view>
+
+    <clr-stack-block [clrSbExpanded]="false">
+        <clr-stack-label>{{ target.name }}</clr-stack-label>
+        <clr-stack-content>
+            <clr-icon shape="pencil" class="is-solid"></clr-icon>&nbsp;&nbsp;
+            <clr-icon shape="trash" class="is-solid"></clr-icon>
+            <!-- <button class="btn btn-primary">Edit</button>&nbsp;
+            <button class="btn btn-primary">Delete</button> -->
+        </clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>
+                <div class="signpost-triggers-wrapper">
+                    <div class="signpost-trigger-demo">
+                        <div class="signpost-item">
+                            <div class="trigger-item">
+                                <clr-signpost>
+                                    <button class="btn btn-link" clrSignpostTrigger>
+                                        Revenue <clr-icon shape="help-info"></clr-icon>
+                                    </button>
+                                    <clr-signpost-content *clrIfOpen>
+                                        <app-bar-chart
+                                            [ChartType]="barChartType"
+                                            [ChartLabel]="revenueBarChartLabels"
+                                            [ChartData]="revenueBarChartData"
+                                            [ChartStack]=true
+                                            [chartText]="revenueBarChartText"
+                                        ></app-bar-chart>
+                                    </clr-signpost-content>
+                                </clr-signpost>
+                            </div>
+                        </div>
+
+                        <div class="signpost-item">
+                            <div class="trigger-item">
+                                <clr-signpost>
+                                    <button class="btn btn-link" clrSignpostTrigger>
+                                        Profit <clr-icon shape="help-info"></clr-icon>
+                                    </button>
+                                    <clr-signpost-content *clrIfOpen>
+                                        <app-bar-chart
+                                            [ChartType]="barChartType"
+                                            [ChartLabel]="profitBarChartLabels"
+                                            [ChartData]="profitBarChartData"
+                                            [ChartStack]=true
+                                            [chartText]="profitBarChartText"
+                                        ></app-bar-chart>
+                                    </clr-signpost-content>
+                                </clr-signpost>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </clr-stack-label>
+            <clr-stack-content>
+                <div>
+                    <div>
+                        <h6>Desription: </h6>
+                        <p>{{ target.info }}</p>
+                    </div>
+                    <div>
+                        <h6>Status:</h6>
+                        <p>{{ target.status }}</p>
+                    </div>
+                    <div>
+                        <h6>Key Contacts:</h6>
+                        <p *ngFor="let contact of target.keyContacts">
+                            {{ contact.name }} - {{ contact.email }}
+                        </p>
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+</clr-stack-view>
