@@ -63,9 +63,9 @@ export class ModalComponent implements OnInit {
                     { year: '2015', value: this.targetData.revenue_2015 }
                 ],
                 profit: [
-                    { year: '2016', value: this.targetData.profit_2017 },
-                    { year: '2015', value: this.targetData.profit_2016 },
-                    { year: '2014', value: this.targetData.profit_2015 }
+                    { year: '2017', value: this.targetData.profit_2017 },
+                    { year: '2016', value: this.targetData.profit_2016 },
+                    { year: '2015', value: this.targetData.profit_2015 }
                 ]
             }
         };

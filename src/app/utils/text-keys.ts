@@ -1,5 +1,5 @@
 export class TextKeys {
-    public static appTitle = 'Company Tracker';
+    public static appTitle = 'EY Tracker';
     public static addTargetHeader = 'Add Target Company';
     public static createTargetLabel = 'Create Target';
     public static updateTargetHeader = 'Update Target Company';
