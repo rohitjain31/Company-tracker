@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActionType } from '../../models/action-type.enum';
+import { TextKeys } from '../../utils/text-keys';
 
 @Component({
   selector: 'app-modal',
@@ -9,9 +11,12 @@ export class ModalComponent implements OnInit {
 
     @Output() public addNewTarget = new EventEmitter<any>();
     @Output() public closeTargetModal = new EventEmitter<any>();
+
     @Input() public targetModal;
     @Input() public targetModalHeader;
     @Input() public targetData;
+    @Input() public targetId;
+    @Input() public actionType: ActionType;
 
     public constructor() { }
 
@@ -21,8 +26,21 @@ export class ModalComponent implements OnInit {
         this.closeTargetModal.emit();
     }
 
+    public get actionTitle(): string {
+        switch (this.actionType) {
+            case ActionType.Add:
+                return TextKeys.add;
+            case ActionType.Update:
+                return TextKeys.update;
+            default:
+                return '';
+        }
+    }
+
     public onAddTarget() {
+        const id = this.actionType === ActionType.Add ? Date.now() : this.targetId;
         const data = {
+            id: id,
             name: this.targetData.targetName,
             status: this.targetData.targetStatus,
             info: this.targetData.targetInfo,

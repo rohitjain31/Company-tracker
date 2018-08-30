@@ -18,3 +18,7 @@ body {
 .keepMarginLeft {
     margin-left: 20px;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

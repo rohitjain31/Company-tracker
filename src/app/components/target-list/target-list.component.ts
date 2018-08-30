@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-target-list',
@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TargetListComponent implements OnInit {
 
     @Input() public target: any = [];
+    @Output() public editClicked = new EventEmitter<any>();
+    @Output() public deleteClicked = new EventEmitter<any>();
+
     public revenueBarChartLabels: string[] = [];
     public revenueBarChartData: any = [];
     public revenueBarChartText: string = 'Revenue Analysis';
@@ -41,6 +44,14 @@ export class TargetListComponent implements OnInit {
             data.push(elem.value);
         });
         this.profitBarChartData.push({ data: data, label: 'Profit (in cr)' });
+    }
+
+    public onEditTarget(id) {
+        this.editClicked.emit(id);
+    }
+
+    public onDeleteTarget(id) {
+        this.deleteClicked.emit(id);
     }
 
 }

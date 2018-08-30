@@ -8,6 +8,7 @@ export class TargetService {
 
     public companiesInfo = [
         {
+            id: Date.now(),
             name: 'Amex',
             status: 'approved',
             info: 'The American Express Company, also known as Amex',
@@ -38,6 +39,14 @@ export class TargetService {
 
     public addToTargetInfo(data) {
         this.companiesInfo.push(data);
+        return Observable.of(this.companiesInfo);
+    }
+
+    public updateTargetInfo(data, id) {
+        this.companiesInfo = this.companiesInfo.map(elem => {
+            return elem.id === id ? data : elem;
+        })
+
         return Observable.of(this.companiesInfo);
     }
 }

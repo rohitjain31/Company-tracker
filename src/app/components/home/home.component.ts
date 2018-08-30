@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionType } from '../../models/action-type.enum';
+import { TextKeys } from '../../utils/text-keys';
 
 import { TargetService } from '../../services/target.service';
 
@@ -14,6 +16,8 @@ export class HomeComponent implements OnInit {
     public targetModalHeader: string;
     public barChartLabels: string[];
     public chartData: any;
+    public targetId: any;
+    public actionType: ActionType;
 
     public defaultTargetData = {};
 
@@ -43,6 +47,22 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    private getTargetDataWhileEdit(data) {
+        this.defaultTargetData = {
+            targetName: data.name,
+            targetStatus: data.status,
+            targetInfo: data.info,
+            keyContactName: data.keyContacts.name,
+            keyContactEmail: data.keyContacts.email,
+            revenue_2017: data.financialPerformance.revenue[0].value,
+            revenue_2016: data.financialPerformance.revenue[1].value,
+            revenue_2015: data.financialPerformance.revenue[2].value,
+            profit_2017: data.financialPerformance.profit[0].value,
+            profit_2016: data.financialPerformance.profit[1].value,
+            profit_2015: data.financialPerformance.profit[2].value
+        }
+    }
+
     private getDefaultTargetInfo() {
         this.targetService.getDefaultTargetInfo()
             .subscribe(res => {
@@ -53,6 +73,7 @@ export class HomeComponent implements OnInit {
 
     public onCreateNewTarget() {
         this.targetModalHeader = 'Add Target Company';
+        this.actionType = ActionType.Add;
         this.getDefaultTargetData();
         this.targetModal = true;
     }
@@ -62,12 +83,34 @@ export class HomeComponent implements OnInit {
     }
 
     public onAddNewTarget(data) {
-        this.targetService.addToTargetInfo(data)
-            .subscribe(res => {
-                this.targetList = res;
-                this.prepareDataForCharts();
-                this.targetModal = false;
-            });
+        if (this.actionType === ActionType.Add) {
+            this.targetService.addToTargetInfo(data)
+                .subscribe(res => {
+                    this.targetList = res;
+                    this.prepareDataForCharts();
+                    this.targetModal = false;
+                });
+        } else {
+            this.targetService.updateTargetInfo(data, this.targetId)
+                .subscribe(res => {
+                    this.targetList = res;
+                    this.prepareDataForCharts();
+                    this.targetModal = false;
+                });
+        }
+    }
+
+    public onEditTarget(id) {
+        const target = this.targetList.filter(elem => elem.id === id);
+        this.targetId = id;
+        this.getTargetDataWhileEdit(target[0]);
+        this.actionType = ActionType.Update;
+        this.targetModalHeader = 'Update Target Company';
+        this.targetModal = true;
+    }
+
+    public onDeleteTarget(id) {
+
     }
 
 }
