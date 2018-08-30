@@ -12,7 +12,7 @@ import { TargetService } from '../../services/target.service';
 export class HomeComponent implements OnInit {
 
     public targetList = [];
-    public targetModal: boolean = false;
+    public targetModal = false;
     public targetModalHeader: string;
     public targetId: any;
     public actionType: ActionType;
@@ -20,14 +20,14 @@ export class HomeComponent implements OnInit {
 
     public defaultTargetData = {};
 
-    public barChartType:string = 'bar';
+    public barChartType = 'bar';
 
     public barChartLabels: string[] = [];
     public revenueBarChartData: any = [];
-    public revenueBarChartText: string = TextKeys.revenueGraphTitle;
+    public revenueBarChartText = TextKeys.revenueGraphTitle;
 
     public profitBarChartData: any = [];
-    public profitBarChartText: string = TextKeys.profitGraphTitle;
+    public profitBarChartText = TextKeys.profitGraphTitle;
 
     public textKeys = TextKeys;
     public constructor(private targetService: TargetService) { }
@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit {
     }
 
     private prepareDataForCharts() {
-        let revenueData = [];
-        let profitData = [];
+        const revenueData = [];
+        const profitData = [];
         this.barChartLabels = [];
         this.revenueBarChartData = [];
         this.profitBarChartData = [];
@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
             profit_2017: 0,
             profit_2016: 0,
             profit_2015: 0
-        }
+        };
     }
 
     private getTargetDataWhileEdit(data) {
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
             profit_2017: data.financialPerformance.profit[0].value,
             profit_2016: data.financialPerformance.profit[1].value,
             profit_2015: data.financialPerformance.profit[2].value
-        }
+        };
     }
 
     private getDefaultTargetInfo() {

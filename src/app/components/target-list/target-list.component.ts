@@ -14,13 +14,13 @@ export class TargetListComponent implements OnInit {
 
     public revenueBarChartLabels: string[] = [];
     public revenueBarChartData: any = [];
-    public revenueBarChartText: string = 'Revenue Analysis';
+    public revenueBarChartText = TextKeys.revenueGraphTitle;
 
     public profitBarChartLabels: string[] = [];
     public profitBarChartData: any = [];
-    public profitBarChartText: string = 'Profit Analysis';
+    public profitBarChartText = TextKeys.profitGraphTitle;
 
-    public barChartType:string = 'bar';
+    public barChartType = 'bar';
 
     public textKeys = TextKeys;
     public constructor() { }
@@ -31,7 +31,7 @@ export class TargetListComponent implements OnInit {
     }
 
     private buildRevenueChartData() {
-        let data = [];
+        const data = [];
         this.target['financialPerformance'].revenue.forEach(elem => {
             this.revenueBarChartLabels.push(elem.year);
             data.push(elem.value);
@@ -40,7 +40,7 @@ export class TargetListComponent implements OnInit {
     }
 
     private buildProfitChartData() {
-        let data = [];
+        const data = [];
         this.target['financialPerformance'].profit.forEach(elem => {
             this.profitBarChartLabels.push(elem.year);
             data.push(elem.value);

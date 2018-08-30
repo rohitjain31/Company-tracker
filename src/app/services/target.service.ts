@@ -89,7 +89,7 @@ export class TargetService {
     public updateTargetInfo(data, id) {
         this.companiesInfo = this.companiesInfo.map(elem => {
             return elem.id === id ? data : elem;
-        })
+        });
 
         return Observable.of(this.companiesInfo);
     }

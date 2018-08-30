@@ -12,11 +12,11 @@ export class BarChartComponent implements OnInit, OnChanges {
     @Input() ChartType;
     @Input() ChartStack;
     @Input() ChartData;
-    barChartOptions:any;
-    barChartLabels:string[];
-    barChartType:string;
-    barChartLegend:boolean;
-    barChartData:any[];
+    barChartOptions: any;
+    barChartLabels: string[];
+    barChartType: string;
+    barChartLegend: boolean;
+    barChartData: any[];
 
     public constructor() { }
 
@@ -62,8 +62,8 @@ export class BarChartComponent implements OnInit, OnChanges {
         this.barChartData = this.ChartData;
     }
 
-    public chartClicked(e:any):void {}
+    public chartClicked(e: any): void {}
 
-    public chartHovered(e:any):void {}
+    public chartHovered(e: any): void {}
 
 }
