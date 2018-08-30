@@ -13,7 +13,9 @@
 <div>
     <app-modal
         [targetModal]="targetModal"
-        (closeTargetModal)="onCloseTargetModal()"
+        (closeTargetModal)="onCloseTargetModal($event)"
         [targetModalHeader]="targetModalHeader"
+        (addNewTarget)="onAddNewTarget($event)"
+        [targetData]="defaultTargetData"
     ></app-modal>
 </div>

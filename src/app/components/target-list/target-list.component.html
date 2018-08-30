@@ -64,9 +64,9 @@
                         <p>{{ target.status }}</p>
                     </div>
                     <div>
-                        <h6>Key Contacts:</h6>
-                        <p *ngFor="let contact of target.keyContacts">
-                            {{ contact.name }} - {{ contact.email }}
+                        <h6>Key Contact:</h6>
+                        <p>
+                            {{ target.keyContacts.name }} - {{ target.keyContacts.email }}
                         </p>
                     </div>
                 </div>

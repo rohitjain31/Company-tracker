@@ -7,12 +7,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
+    @Output() public addNewTarget = new EventEmitter<any>();
     @Output() public closeTargetModal = new EventEmitter<any>();
     @Input() public targetModal;
     @Input() public targetModalHeader;
-
-    public perfCountArray = [1];
-    public financialData = [];
+    @Input() public targetData;
 
     public constructor() { }
 
@@ -22,14 +21,30 @@ export class ModalComponent implements OnInit {
         this.closeTargetModal.emit();
     }
 
-    public onAddfinancialReport() {
-        const val = this.perfCountArray[this.perfCountArray.length - 1];
-        this.perfCountArray.push(val);
-    }
+    public onAddTarget() {
+        const data = {
+            name: this.targetData.targetName,
+            status: this.targetData.targetStatus,
+            info: this.targetData.targetInfo,
+            keyContacts: {
+                name: this.targetData.keyContactName,
+                email: this.targetData.keyContactEmail
+            },
+            financialPerformance: {
+                revenue: [
+                    { year: '2017', value: this.targetData.revenue_2017 },
+                    { year: '2016', value: this.targetData.revenue_2016 },
+                    { year: '2015', value: this.targetData.revenue_2015 }
+                ],
+                profit: [
+                    { year: '2016', value: this.targetData.profit_2017 },
+                    { year: '2015', value: this.targetData.profit_2016 },
+                    { year: '2014', value: this.targetData.profit_2015 }
+                ]
+            }
+        };
 
-    public onRemovefinancialReport(index) {
-        console.log(index);
-        this.perfCountArray.splice(index, 1);
+        this.addNewTarget.emit(data);
     }
 
 }

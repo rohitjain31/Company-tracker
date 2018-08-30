@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
     public barChartLabels: string[];
     public chartData: any;
 
+    public defaultTargetData = {};
+
     public constructor(private targetService: TargetService) { }
 
     public ngOnInit() {
@@ -23,6 +25,22 @@ export class HomeComponent implements OnInit {
 
     private prepareDataForCharts() {
 
+    }
+
+    private getDefaultTargetData() {
+        this.defaultTargetData = {
+            targetName: '',
+            targetStatus: 'researching',
+            targetInfo: '',
+            keyContactName: '',
+            keyContactEmail: '',
+            revenue_2017: 0,
+            revenue_2016: 0,
+            revenue_2015: 0,
+            profit_2017: 0,
+            profit_2016: 0,
+            profit_2015: 0
+        }
     }
 
     private getDefaultTargetInfo() {
@@ -35,11 +53,21 @@ export class HomeComponent implements OnInit {
 
     public onCreateNewTarget() {
         this.targetModalHeader = 'Add Target Company';
+        this.getDefaultTargetData();
         this.targetModal = true;
     }
 
-    public onCloseTargetModal() {
+    public onCloseTargetModal(e) {
         this.targetModal = false;
+    }
+
+    public onAddNewTarget(data) {
+        this.targetService.addToTargetInfo(data)
+            .subscribe(res => {
+                this.targetList = res;
+                this.prepareDataForCharts();
+                this.targetModal = false;
+            });
     }
 
 }
