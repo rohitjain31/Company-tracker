@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent implements OnInit {
+export class BarChartComponent implements OnInit, OnChanges {
 
     @Input() chartText;
     @Input() ChartLabel;
@@ -21,6 +21,14 @@ export class BarChartComponent implements OnInit {
     public constructor() { }
 
     public ngOnInit() {
+        this.renderChart();
+    }
+
+    public ngOnChanges(changes: SimpleChanges) {
+        this.renderChart();
+    }
+
+    private renderChart() {
         this.barChartOptions = {
             scaleShowVerticalLines: false,
             responsive: true,

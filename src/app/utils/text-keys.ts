@@ -21,4 +21,6 @@ export class TextKeys {
     public static delete = 'Delete';
     public static noTargetMessage = 'There is no Target Company. Please add one!';
     public static deleteConfirmationMessage = 'Are you sure, you want to delete?';
+    public static revenueGraphTitle = 'Revenue Analysis';
+    public static profitGraphTitle = 'Profit Analysis';
 }

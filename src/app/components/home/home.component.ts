@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
     public targetList = [];
     public targetModal: boolean = false;
     public targetModalHeader: string;
-    public chartData: any;
     public targetId: any;
     public actionType: ActionType;
     public performanceYear = '2017';
@@ -25,10 +24,10 @@ export class HomeComponent implements OnInit {
 
     public barChartLabels: string[] = [];
     public revenueBarChartData: any = [];
-    public revenueBarChartText: string = 'Revenue Analysis';
+    public revenueBarChartText: string = TextKeys.revenueGraphTitle;
 
     public profitBarChartData: any = [];
-    public profitBarChartText: string = 'Profit Analysis';
+    public profitBarChartText: string = TextKeys.profitGraphTitle;
 
     public textKeys = TextKeys;
     public constructor(private targetService: TargetService) { }
