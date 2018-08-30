@@ -110,7 +110,19 @@ export class HomeComponent implements OnInit {
     }
 
     public onDeleteTarget(id) {
+        this.actionType = ActionType.Delete;
+        this.targetId = id;
+        this.targetModalHeader = 'Delete Target Confirmation';
+        this.targetModal = true;
+    }
 
+    public onDeleteCompany(id) {
+        this.targetService.deleteTargetInfo(this.targetId)
+            .subscribe(res => {
+                this.targetList = res;
+                this.prepareDataForCharts();
+                this.targetModal = false;
+            });
     }
 
 }

@@ -11,6 +11,7 @@ export class ModalComponent implements OnInit {
 
     @Output() public addNewTarget = new EventEmitter<any>();
     @Output() public closeTargetModal = new EventEmitter<any>();
+    @Output() public deleteTarget = new EventEmitter<string>();
 
     @Input() public targetModal;
     @Input() public targetModalHeader;
@@ -32,9 +33,15 @@ export class ModalComponent implements OnInit {
                 return TextKeys.add;
             case ActionType.Update:
                 return TextKeys.update;
+            case ActionType.Delete:
+                return TextKeys.delete;
             default:
                 return '';
         }
+    }
+
+    public getDeleteModal() {
+        return this.actionType === ActionType.Delete ? true : false;
     }
 
     public onAddTarget() {
@@ -63,6 +70,10 @@ export class ModalComponent implements OnInit {
         };
 
         this.addNewTarget.emit(data);
+    }
+
+    public onDeleteTarget() {
+        this.deleteTarget.emit(this.targetId);
     }
 
 }

@@ -5,22 +5,31 @@
 <br>
 <br>
 
-<div *ngFor="let target of targetList">
-    <app-target-list
-        [target]="target"
-        (editClicked)="onEditTarget($event)"
-        (deleteClicked)="onDeleteTarget($event)"
-    ></app-target-list>
-</div>
+<ng-container *ngIf="targetList.length > 0; else emptyMsg">
+    <div *ngFor="let target of targetList">
+        <app-target-list
+            [target]="target"
+            (editClicked)="onEditTarget($event)"
+            (deleteClicked)="onDeleteTarget($event)"
+        ></app-target-list>
+    </div>
 
-<div>
-    <app-modal
-        [targetModal]="targetModal"
-        (closeTargetModal)="onCloseTargetModal($event)"
-        [targetModalHeader]="targetModalHeader"
-        (addNewTarget)="onAddNewTarget($event)"
-        [targetData]="defaultTargetData"
-        [actionType]="actionType"
-        [targetId]="targetId"
-    ></app-modal>
-</div>
+    <div>
+        <app-modal
+            [targetModal]="targetModal"
+            (closeTargetModal)="onCloseTargetModal($event)"
+            [targetModalHeader]="targetModalHeader"
+            (addNewTarget)="onAddNewTarget($event)"
+            [targetData]="defaultTargetData"
+            [actionType]="actionType"
+            [targetId]="targetId"
+            (deleteTarget)="onDeleteCompany($event)"
+        ></app-modal>
+    </div>
+</ng-container>
+
+<ng-template #emptyMsg>
+    <div>
+        There is no Target Company. Please add one!
+    </div>
+</ng-template>

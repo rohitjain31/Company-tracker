@@ -49,4 +49,9 @@ export class TargetService {
 
         return Observable.of(this.companiesInfo);
     }
+
+    public deleteTargetInfo(id) {
+        this.companiesInfo = this.companiesInfo.filter(elem => elem.id !== id);
+        return Observable.of(this.companiesInfo);
+    }
 }
