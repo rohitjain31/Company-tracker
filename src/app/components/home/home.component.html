@@ -2,29 +2,70 @@
     (createNewTarget)="onCreateNewTarget($event)"
 ></app-navbar>
 
-<br>
-<br>
+<div class="keepMarginTop keepMarginLeft">
+    <label for="performanceYear"><b>{{ textKeys.performanceYear }}</b></label>&nbsp;&nbsp;
+    <select name="" id="" [(ngModel)]="performanceYear" (change)="onChangePerfYear()">
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+    </select>
+</div>
 
-<ng-container *ngIf="targetList.length > 0; else emptyMsg">
-    <div *ngFor="let target of targetList">
-        <app-target-list
-            [target]="target"
-            (editClicked)="onEditTarget($event)"
-            (deleteClicked)="onDeleteTarget($event)"
-        ></app-target-list>
+<div class="row">
+    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+        <div class="card keepMarginLeft">
+            <div class="card-block">
+                <app-bar-chart
+                    [ChartType]="barChartType"
+                    [ChartLabel]="barChartLabels"
+                    [ChartData]="revenueBarChartData"
+                    [ChartStack]=true
+                    [chartText]="revenueBarChartText"
+                ></app-bar-chart>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <app-modal
-            [targetModal]="targetModal"
-            (closeTargetModal)="onCloseTargetModal($event)"
-            [targetModalHeader]="targetModalHeader"
-            (addNewTarget)="onAddNewTarget($event)"
-            [targetData]="defaultTargetData"
-            [actionType]="actionType"
-            [targetId]="targetId"
-            (deleteTarget)="onDeleteCompany($event)"
-        ></app-modal>
+    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+        <div class="card keepMarginLeft">
+            <div class="card-block">
+                <app-bar-chart
+                    [ChartType]="barChartType"
+                    [ChartLabel]="barChartLabels"
+                    [ChartData]="profitBarChartData"
+                    [ChartStack]=true
+                    [chartText]="profitBarChartText"
+                ></app-bar-chart>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="targetList.length > 0; else emptyMsg">
+    <div class="keepMarginTop keepMarginLeft keepMarginRight keepMarginBottom">
+        <div class="keepMarginTop">
+            <h3>{{ textKeys.targetList }}</h3>
+        </div>
+        <div *ngFor="let target of targetList">
+            <app-target-list
+                [target]="target"
+                (editClicked)="onEditTarget($event)"
+                (deleteClicked)="onDeleteTarget($event)"
+            ></app-target-list>
+        </div>
+
+        <div>
+            <app-modal
+                [targetModal]="targetModal"
+                (closeTargetModal)="onCloseTargetModal($event)"
+                [targetModalHeader]="targetModalHeader"
+                (addNewTarget)="onAddNewTarget($event)"
+                [targetData]="defaultTargetData"
+                [actionType]="actionType"
+                [targetId]="targetId"
+                (deleteTarget)="onDeleteCompany($event)"
+            ></app-modal>
+        </div>
     </div>
 </ng-container>
 

@@ -14,12 +14,21 @@ export class HomeComponent implements OnInit {
     public targetList = [];
     public targetModal: boolean = false;
     public targetModalHeader: string;
-    public barChartLabels: string[];
     public chartData: any;
     public targetId: any;
     public actionType: ActionType;
+    public performanceYear = '2017';
 
     public defaultTargetData = {};
+
+    public barChartType:string = 'bar';
+
+    public barChartLabels: string[] = [];
+    public revenueBarChartData: any = [];
+    public revenueBarChartText: string = 'Revenue Analysis';
+
+    public profitBarChartData: any = [];
+    public profitBarChartText: string = 'Profit Analysis';
 
     public textKeys = TextKeys;
     public constructor(private targetService: TargetService) { }
@@ -29,7 +38,28 @@ export class HomeComponent implements OnInit {
     }
 
     private prepareDataForCharts() {
+        let revenueData = [];
+        let profitData = [];
+        this.barChartLabels = [];
+        this.revenueBarChartData = [];
+        this.profitBarChartData = [];
+        this.targetList.forEach(elem => {
+            this.barChartLabels.push(elem.name);
 
+            elem['financialPerformance'].revenue.forEach(e => {
+                if (e.year === this.performanceYear) {
+                    revenueData.push(e.value);
+                }
+            });
+
+            elem['financialPerformance'].profit.forEach(e => {
+                if (e.year === this.performanceYear) {
+                    profitData.push(e.value);
+                }
+            });
+        });
+        this.revenueBarChartData.push({ data: revenueData, label: 'Revenue (in cr)' });
+        this.profitBarChartData.push({ data: profitData, label: 'Profit (in cr)' });
     }
 
     private getDefaultTargetData() {
@@ -70,6 +100,10 @@ export class HomeComponent implements OnInit {
                 this.targetList = res;
                 this.prepareDataForCharts();
             });
+    }
+
+    public onChangePerfYear() {
+        this.prepareDataForCharts();
     }
 
     public onCreateNewTarget() {

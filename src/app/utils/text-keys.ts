@@ -3,6 +3,8 @@ export class TextKeys {
     public static addTargetHeader = 'Add Target Company';
     public static createTargetLabel = 'Create Target';
     public static updateTargetHeader = 'Update Target Company';
+    public static targetList = 'Target List';
+    public static performanceYear = 'Performance Year';
     public static deleteTargetConfirmation = 'Delete Target Confirmation';
     public static companyNameLabel = 'Company Name: ';
     public static companyStatusLabel = 'Status: ';
