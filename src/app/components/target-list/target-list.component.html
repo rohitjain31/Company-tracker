@@ -17,7 +17,7 @@
                             <div class="trigger-item">
                                 <clr-signpost>
                                     <button class="btn btn-link" clrSignpostTrigger>
-                                        Revenue <clr-icon shape="help-info"></clr-icon>
+                                        {{ textKeys.revenue }} <clr-icon shape="help-info"></clr-icon>
                                     </button>
                                     <clr-signpost-content *clrIfOpen>
                                         <app-bar-chart
@@ -36,7 +36,7 @@
                             <div class="trigger-item">
                                 <clr-signpost>
                                     <button class="btn btn-link" clrSignpostTrigger>
-                                        Profit <clr-icon shape="help-info"></clr-icon>
+                                        {{ textKeys.profit }} <clr-icon shape="help-info"></clr-icon>
                                     </button>
                                     <clr-signpost-content *clrIfOpen>
                                         <app-bar-chart
@@ -56,15 +56,15 @@
             <clr-stack-content>
                 <div>
                     <div>
-                        <h6>Desription: </h6>
+                        <h6>{{ textKeys.companyDescriptionLabel }}</h6>
                         <p>{{ target.info }}</p>
                     </div>
                     <div>
-                        <h6>Status:</h6>
+                        <h6>{{ textKeys.companyStatusLabel }}</h6>
                         <p>{{ target.status }}</p>
                     </div>
                     <div>
-                        <h6>Key Contact:</h6>
+                        <h6>{{ textKeys.companyContactLabel }}</h6>
                         <p>
                             {{ target.keyContacts.name }} - {{ target.keyContacts.email }}
                         </p>

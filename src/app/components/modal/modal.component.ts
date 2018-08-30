@@ -19,6 +19,7 @@ export class ModalComponent implements OnInit {
     @Input() public targetId;
     @Input() public actionType: ActionType;
 
+    public textKeys = TextKeys;
     public constructor() { }
 
     public ngOnInit() {}

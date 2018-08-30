@@ -3,12 +3,12 @@
         <h3 class="modal-title">{{ targetModalHeader }}</h3>
         <div class="modal-body">
             <div class="keepMarginTop">
-                <label for="companyName"><b>Company Name: </b></label>&nbsp;&nbsp;
+                <label for="companyName"><b>{{ textKeys.companyNameLabel }}</b></label>&nbsp;&nbsp;
                 <input type="text" [(ngModel)]="targetData.targetName" placeholder="Target Company Name" name="companyName" />
             </div>
 
             <div class="keepMarginTop">
-                <label for="companyStatus"><b>Status: </b></label>&nbsp;&nbsp;
+                <label for="companyStatus"><b>{{ textKeys.companyStatusLabel }}</b></label>&nbsp;&nbsp;
                 <select name="" id="" [(ngModel)]="targetData.targetStatus">
                     <option value="researching">Researching</option>
                     <option value="pending approval">Pending Approval</option>
@@ -18,12 +18,12 @@
             </div>
 
             <div class="keepMarginTop">
-                <label for="companyInfo"><b>Description: </b></label>&nbsp;&nbsp;
+                <label for="companyInfo"><b>{{ textKeys.companyDescriptionLabel }}</b></label>&nbsp;&nbsp;
                 <textarea id="" [(ngModel)]="targetData.targetInfo" name="companyInfo" rows="5"></textarea>
             </div>
 
             <div class="keepMarginTop">
-                <label for="keyContacts"><b>Key Contact: </b></label>
+                <label for="keyContacts"><b>{{ textKeys.companyContactLabel }}</b></label>
                 <div class="keepSmallMarginTop">
                     <input type="text" [(ngModel)]="targetData.keyContactName" placeholder="Contact name" />&nbsp;&nbsp;
                     <input type="text" [(ngModel)]="targetData.keyContactEmail" placeholder="Contact email id">
@@ -31,15 +31,15 @@
             </div>
 
             <div class="keepMarginTop">
-                <label for="financialPerformance"><b>Financial Performance: </b></label>
+                <label for="financialPerformance"><b>{{ textKeys.comapnyPerformanceLabel }}</b></label>
                 <div class="keepSmallMarginTop keepMarginBottom keepMarginLeft">
-                    <span><b>Revenue (in cr):</b></span>&nbsp;&nbsp;
+                    <span><b>{{ textKeys.companyRevenueLabel }}</b></span>&nbsp;&nbsp;
                     <input type="number" placeholder="For year 2017" [(ngModel)]="targetData.revenue_2017" />&nbsp;&nbsp;
                     <input type="number" placeholder="For year 2016" [(ngModel)]="targetData.revenue_2016" />&nbsp;&nbsp;
                     <input type="number" placeholder="For year 2015" [(ngModel)]="targetData.revenue_2015" />
                 </div>
                 <div class="keepMarginTop keepMarginBottom keepMarginLeft">
-                    <span><b>Profit (in cr):</b></span>&nbsp;&nbsp;
+                    <span><b>{{ textKeys.companyProfitLabel }}</b></span>&nbsp;&nbsp;
                     <input type="number" placeholder="For year 2017" [(ngModel)]="targetData.profit_2017" />&nbsp;&nbsp;
                     <input type="number" placeholder="For year 2016" [(ngModel)]="targetData.profit_2016" />&nbsp;&nbsp;
                     <input type="number" placeholder="For year 2015" [(ngModel)]="targetData.profit_2015" />
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline" (click)="onCloseTargetModal()">Cancel</button>
+            <button type="button" class="btn btn-outline" (click)="onCloseTargetModal()">{{ textKeys.cancel }}</button>
             <button type="button" class="btn btn-primary" (click)="onAddTarget()">{{ actionTitle }}</button>
         </div>
     </clr-modal>
@@ -57,10 +57,10 @@
     <clr-modal [(clrModalOpen)]="targetModal" [clrModalClosable]="false">
         <h3 class="modal-title">{{ targetModalHeader }}</h3>
         <div class="modal-body">
-            <h6>Are you sure, you want to delete?</h6>
+            <h6>{{ textKeys.deleteConfirmationMessage }}</h6>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline" (click)="onCloseTargetModal()">Cancel</button>
+            <button type="button" class="btn btn-outline" (click)="onCloseTargetModal()">{{ textKeys.cancel }}</button>
             <button type="button" class="btn btn-primary" (click)="onDeleteTarget()">{{ actionTitle }}</button>
         </div>
     </clr-modal>

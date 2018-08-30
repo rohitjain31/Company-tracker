@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { BarChartComponent } from './shared/bar-chart/bar-chart.component';
-import { PieChartComponent } from './shared/pie-chart/pie-chart.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { TargetListComponent } from './components/target-list/target-list.component';
 import { ModalComponent } from './components/modal/modal.component';
@@ -18,7 +17,6 @@ import { ModalComponent } from './components/modal/modal.component';
     AppComponent,
     HomeComponent,
     BarChartComponent,
-    PieChartComponent,
     NavbarComponent,
     TargetListComponent,
     ModalComponent

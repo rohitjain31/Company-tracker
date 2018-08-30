@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TextKeys } from '../../utils/text-keys';
 
 @Component({
   selector: 'app-target-list',
@@ -21,6 +22,7 @@ export class TargetListComponent implements OnInit {
 
     public barChartType:string = 'bar';
 
+    public textKeys = TextKeys;
     public constructor() { }
 
     public ngOnInit() {

@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
 
     public defaultTargetData = {};
 
+    public textKeys = TextKeys;
     public constructor(private targetService: TargetService) { }
 
     public ngOnInit() {
@@ -72,7 +73,7 @@ export class HomeComponent implements OnInit {
     }
 
     public onCreateNewTarget() {
-        this.targetModalHeader = 'Add Target Company';
+        this.targetModalHeader = TextKeys.addTargetHeader;
         this.actionType = ActionType.Add;
         this.getDefaultTargetData();
         this.targetModal = true;
@@ -105,14 +106,14 @@ export class HomeComponent implements OnInit {
         this.targetId = id;
         this.getTargetDataWhileEdit(target[0]);
         this.actionType = ActionType.Update;
-        this.targetModalHeader = 'Update Target Company';
+        this.targetModalHeader = TextKeys.updateTargetHeader;
         this.targetModal = true;
     }
 
     public onDeleteTarget(id) {
         this.actionType = ActionType.Delete;
         this.targetId = id;
-        this.targetModalHeader = 'Delete Target Confirmation';
+        this.targetModalHeader = TextKeys.deleteTargetConfirmation;
         this.targetModal = true;
     }
 
